@@ -86,5 +86,6 @@ def generate_rss():
 
     tree.write(BASEPATH + "/podcast.rss")
 
-# download_audio(ydl_opts)
+download_audio(ydl_opts)
 clean_files()
+generate_rss()
