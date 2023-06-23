@@ -26,10 +26,7 @@ def download_audio(ydl_opts):
     ydl.download([CHANNELID])
 
 def clean_files():
-    files = [f for f in listdir(BASEPATH + "/download/") if isfile(join('', f))]
-    print(files)
-
-    for file in files:
+    for file in listdir(BASEPATH + "/download/"):
         if ('.mp3' in file):
             try:
                 filename = file.strip()
@@ -89,5 +86,5 @@ def generate_rss():
 
     tree.write(BASEPATH + "/podcast.rss")
 
-download_audio(ydl_opts)
+# download_audio(ydl_opts)
 clean_files()
