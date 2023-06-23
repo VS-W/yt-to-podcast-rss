@@ -19,8 +19,6 @@ PUBLICURL = ydl_opts["PUBLICURL"]
 REMOVE_WORDS = ydl_opts["REMOVE_WORDS"]
 CHANNELID = ydl_opts["CHANNELID"]
 
-results = []
-
 def download_audio(ydl_opts):
     ydl_opts["outtmpl"] = BASEPATH + "/download/" + ydl_opts["outtmpl"]
 
@@ -42,7 +40,7 @@ def clean_files():
                 match = re.match(r"^\[\d{8}\]", filename)
 
                 if match:
-                    results.append(f'{filename}')
+                    print(f'{filename}')
                     p = Path(BASEPATH + "/download/" + file).absolute()
                     parent_dir = p.parents[1]
                     p.rename(parent_dir / filename)
@@ -92,5 +90,4 @@ def generate_rss():
     tree.write(BASEPATH + "/podcast.rss")
 
 download_audio(ydl_opts)
-
-print(results)
+clean_files()
