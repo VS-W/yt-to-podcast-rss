@@ -93,4 +93,4 @@ def generate_rss():
 
 download_audio(ydl_opts)
 
-return results
+print(results)
