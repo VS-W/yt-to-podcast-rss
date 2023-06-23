@@ -82,7 +82,7 @@ Generated `podcast.rss` - as built, doesn't pretty-print to the .rss file, but t
 	<rss version="2.0">
 		<channel>
 			<title>Level1 News (RSS)</title>
-			<description>Level1 News - ripped from youtube.</description>
+			<description>Level1 News</description>
 			<image>
 				<link>https://web.site/level1/</link>
 				<title>Level1 News (RSS)</title>
