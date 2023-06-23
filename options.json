@@ -1,0 +1,16 @@
+{
+	"BASEPATH": "/var/www/html/name_feed",
+	"PUBLICURL": "https://web.site/name_feed/",
+	"REMOVE_WORDS": ["common words in the titles to remove", "totally optional"],
+	"CHANNELID": "channel ID/playlist ID/anything yt-dlp recognizes as a list of videos",
+	"matchtitle": "(optionalregextomatchtitles|egPodcast)",
+	"download_archive": "downloaded.txt",
+	"format": "bestaudio/best",
+	"postprocessors": [{
+		"key": "FFmpegExtractAudio",
+		"preferredcodec": "mp3",
+		"preferredquality": "256"
+	}],
+	"playlistend": 10,
+	"outtmpl": "%(upload_date>[%Y%m%d])s %(title)s.%(ext)s"
+}

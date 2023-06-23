@@ -1,0 +1,12 @@
+<rss version="2.0">
+    <channel>
+        <title>Podcast Name (RSS)</title>
+        <description>Podcast description</description>
+        <image>
+            <link>https://web.site/podcastname/</link>
+            <title>Podcast Name (RSS)</title>
+            <url>https://web.site/podcastname/icon.jpg</url>
+        </image>
+        <link>https://web.site/podcastname/</link>
+    </channel>
+</rss>
