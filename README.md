@@ -139,7 +139,7 @@ Result as displayed in my podcast app of choice:
 
 ![example](example.png)
 
-I don't generally like having my podcast app constantly updating files in the background, so I generally check manually for new tracks. For the podcasts that I'm pulling from Youtube, I usually like to know when those are available - having a notification for it is useful, so the script writes any newly obtained files for that run to `new.txt`. If you're automating these, e.g. via cron, you can pass that contents of that file to your notification system of choice. I built a [simple Discord bot](https://github.com/VS-W/pdbs) to handle this for me, with the general usage as follows:
+I don't like having my podcast app constantly updating files in the background, so I check manually for new tracks. For the podcasts that I'm pulling from Youtube, I usually like to know when those are available - having a notification for it is useful, so the script writes any newly obtained files for that run to `new.txt`. If you're automating these, e.g. via cron, you can pass the contents of that file to your notification system of choice. I built a [simple Discord bot](https://github.com/VS-W/pdbs) to handle this for me, with the general usage as follows:
 
 ### Crontab, run at set hours that my targeted channel generally schedule their uploads for.
 
