@@ -26,6 +26,7 @@ def download_audio(ydl_opts):
     ydl.download([CHANNELID])
 
 def clean_files():
+    newfiles = []
     for file in listdir(BASEPATH + "/download/"):
         if ('.mp3' in file):
             try:
@@ -37,7 +38,7 @@ def clean_files():
                 match = re.match(r"^\[\d{8}\]", filename)
 
                 if match:
-                    print(f'{filename}')
+                    newfiles.append(f'{filename}')
                     p = Path(BASEPATH + "/download/" + file).absolute()
                     parent_dir = p.parents[1]
                     p.rename(parent_dir / filename)
@@ -45,6 +46,7 @@ def clean_files():
                 print("An exception occurred: ") 
                 print_exc()
                 print_stack()
+    return newfiles
 
 def generate_rss():
     tree = xmltree.parse(BASEPATH + "/podcasttemplate.rss")
@@ -87,5 +89,8 @@ def generate_rss():
     tree.write(BASEPATH + "/podcast.rss")
 
 download_audio(ydl_opts)
-clean_files()
+newfiles = clean_files()
 generate_rss()
+
+with open("new.txt", "w") as f:
+    f.writelines(file + "\n" for file in newfiles)
