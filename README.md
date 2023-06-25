@@ -130,6 +130,7 @@ And the resulting file structure:
 	downloaded.txt
 	export.py
 	icon.jpg
+	new.txt
 	options.json
 	podcast.rss
 	podcasttemplate.rss
@@ -137,3 +138,20 @@ And the resulting file structure:
 Result as displayed in my podcast app of choice:
 
 ![example](example.png)
+
+I don't generally like having my podcast app constantly updating files in the background, so I generally check manually for new tracks. For the podcasts that I'm pulling from Youtube, I usually like to know when those are available - having a notification for it is useful, so the script writes any newly obtained files for that run to `new.txt`. If you're automating these, e.g. via cron, you can pass that contents of that file to your notification system of choice. I built a [simple Discord bot](https://github.com/VS-W/pdbs) to handle this for me, with the general usage as follows:
+
+### Crontab, run at set hours that my targeted channel generally schedule their uploads for.
+
+	*/15 1-5 * * * user /var/www/html/level1/run.sh && /var/www/html/level1/notify.sh
+
+### notify.sh, a rudimentary bash script to iterate the contents of new.txt and pass it to the notification client script.
+
+	#!/bin/bash
+	
+	while IFS= read -r line; do
+	    python3 /home/user/docker/pdbs/client.py "NEW: $line"
+	    sleep 2
+	done < new.txt
+
+![example notifcation](example2.png)
