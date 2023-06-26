@@ -46,7 +46,8 @@ def clean_files():
                 print("An exception occurred: ") 
                 print_exc()
                 print_stack()
-    return newfiles
+    with open("new.txt", "w") as f:
+        f.writelines(file + "\n" for file in newfiles)
 
 def generate_rss():
     tree = xmltree.parse(BASEPATH + "/podcasttemplate.rss")
@@ -89,8 +90,5 @@ def generate_rss():
     tree.write(BASEPATH + "/podcast.rss")
 
 download_audio(ydl_opts)
-newfiles = clean_files()
+clean_files()
 generate_rss()
-
-with open("new.txt", "w") as f:
-    f.writelines(file + "\n" for file in newfiles)
